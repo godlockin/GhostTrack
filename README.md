@@ -1,53 +1,66 @@
 # GhostTrack
-Useful tool to track location or mobile number, so this tool can be called osint or also information gathering
 
-<img src="https://github.com/HunxByts/GhostTrack/blob/main/asset/bn.png"/>
+OSINT tool for IP address, phone number and username lookups.
 
-New update :
-```Version 2.2```
+<img src="https://github.com/godlockin/GhostTrack/blob/main/asset/bn.png"/>
 
-### Instalation on Linux (deb)
-```
-sudo apt-get install git
-sudo apt-get install python3
-```
+> ⚠️ **Legal notice**: GhostTrack sends queries to third parties (ipwho.is,
+> ipify.org and public websites). Use only against targets you are authorized
+> to investigate. Tracking and username enumeration may be restricted in your
+> jurisdiction. Results are city-level metadata, not live tracking.
 
-### Instalation on Termux
-```
-pkg install git
-pkg install python3
-```
+## Install
 
-### Usage Tool
-```
-git clone https://github.com/HunxByts/GhostTrack.git
-cd GhostTrack
-pip3 install -r requirements.txt
-python3 GhostTR.py
+With [uv](https://docs.astral.sh/uv/) (recommended):
+
+```bash
+uv sync
+uv run ghosttrack
 ```
 
-Display on the menu ```IP Tracker```
+With pip:
 
-<img src="https://github.com/HunxByts/GhostTrack/blob/main/asset/ip.png " />
+```bash
+pip install .
+ghosttrack
+```
 
-on the IP Track menu, you can combo with the seeker tool to get the target IP
-<details>
-<summary>:zap: Install Seeker :</summary>
-- <strong><a href="https://github.com/thewhiteh4t/seeker">Get Seeker</a></strong>
-</details>
+For development:
 
-Display on the menu ```Phone Tracker```
+```bash
+uv sync --dev
+uv run ruff check .
+uv run pytest
+```
 
-<img src="https://github.com/HunxByts/GhostTrack/blob/main/asset/phone.png" />
+## Usage
 
-on this menu you can search for information from the target phone number
+After launch a menu is shown:
 
-Display on the menu ```Username Tracker```
+```
+[ 1 ] IP address lookup        # city/ISP-level info + Google Maps link
+[ 2 ] Show my public IP
+[ 3 ] Phone number lookup      # offline carrier metadata (phonenumbers)
+[ 4 ] Username lookup          # 25 sites, concurrent, with progress
+[ 0 ] Exit
+```
 
-<img src="https://github.com/HunxByts/GhostTrack/blob/main/asset/User.png"/>
-on this menu you can search for information from the target username on social media
+- Enter `b` at any target prompt to go back to the menu.
+- Phone numbers should use E.164 format, e.g. `+8613800138000`; you can set a
+  fallback region for numbers without `+`.
+- Username results are one of **found** / **not found** / **unknown**
+  (anti-bot responses) and should be manually verified.
 
-<details>
-<summary>:zap: Author :</summary>
-- <strong><a href="https://github.com/HunxByts">HunxByts</a></strong>
-</details>
+## Display
+
+`IP lookup`
+
+<img src="https://github.com/godlockin/GhostTrack/blob/main/asset/ip.png"/>
+
+`Phone lookup`
+
+<img src="https://github.com/godlockin/GhostTrack/blob/main/asset/phone.png"/>
+
+`Username lookup`
+
+<img src="https://github.com/godlockin/GhostTrack/blob/main/asset/User.png"/>
